@@ -13,7 +13,9 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    IonicModule
+    IonicModule.forRoot({
+      mode: 'md'
+    }),
   ],
   providers: [
     provideClientHydration(),
