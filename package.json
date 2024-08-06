@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:ionic-angular-ssr-attachShadow-typeError": "node dist/ionic-angular-ssr-attach-shadow-type-error/server/server.mjs"
+    "build:ssr": "ng build && ng run app:server",
+    "serve:ssr": "node dist/app/server/main.js"
   },
   "private": true,
   "dependencies": {
