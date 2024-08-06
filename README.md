@@ -1,27 +1,51 @@
 # IonicAngularSsrAttachShadowTypeError
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3.
+This app was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.1.3, with the command:
 
-## Development server
+```bash
+ng new ionic-angular-ssr-attachShadow-typeError --ssr=true --standalone=false --style=scss
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+It’s a modules-based Angular SSR app with Ionic added to it with the command:
 
-## Code scaffolding
+```bash
+npm install @ionic/angular @ionic/angular-server
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+The generated Angular app has been modified to use the older, Webpack-based `browser` builder. See the commit history for the changes.
 
-## Build
+The app demonstrates an `elm.attachShadow is not a function` TypeError in Ionic components in Angular SSR apps with Ionic version >= 8.2.4. The error does not appear in version 8.2.2 and prior, but in every later version (current latest: 8.2.6).
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Steps to reproduce the TypeError
 
-## Running unit tests
+1. Clone the repository and `cd` into it.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Install dependencies:
 
-## Running end-to-end tests
+```bash
+npm install
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. Build the SSR app:
 
-## Further help
+```bash
+npm run build:ssr
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+4. Initilise the SSR app:
+
+```bash
+npm run serve:ssr
+```
+
+5. Open your browser on <http://localhost:4000>.
+
+6. The following error will appear in the terminal:
+
+```
+TypeError: elm.attachShadow is not a function
+```
+
+The demo has just an ion-button in `src/app.component.html`. You will also get the error with an ion-chip. I haven’t tested with any other Ionic components.
+
+If you pin the version of `@ionic/angular` and `@ionic/angular-server` to 8.2.2 in `package.json` you will not get the error.
