@@ -1,6 +1,6 @@
 import 'zone.js/node';
 import { APP_BASE_HREF } from '@angular/common';
-import { CommonEngine } from '@angular/ssr';
+import { CommonEngine } from '@angular/ssr/node';
 import express from 'express';
 import { join } from 'node:path';
 import { existsSync } from 'fs';
