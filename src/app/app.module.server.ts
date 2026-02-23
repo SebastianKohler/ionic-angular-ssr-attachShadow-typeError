@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { ServerModule } from '@angular/platform-server';
-import { IonicServerModule } from '@ionic/angular-server';
 
 import { AppModule } from './app.module';
 import { AppComponent } from './app.component';
+import { IonicServerScopedModule } from './ionic-server-scoped.module';
 
 @NgModule({
   imports: [
     AppModule,
     ServerModule,
-    IonicServerModule,
+    IonicServerScopedModule,
   ],
   bootstrap: [AppComponent],
 })
